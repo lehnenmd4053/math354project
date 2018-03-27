@@ -1,1 +1,1 @@
-# math354project
+# The "newtestcase" file is the one that reads in the information from excel from the large list of all classes.  The "popular_class_list" is the function that reads in the 73 most popular classes and creates a new matrix that only includes the sections of those classes.
