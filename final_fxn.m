@@ -4,7 +4,6 @@ filename = 'Top 73 Course List.xlsx';
 [~, top_classes] = xlsread(filename);
 name_of_class = cellstr(name_of_class);
 foundClass = 0;
-display(name_of_class);
 ii = 1;
 while (ii<=length(top_classes)) && (foundClass==0)
     foundClass = isequal(name_of_class,top_classes(ii,2));
@@ -15,8 +14,8 @@ if foundClass == 0
 else
    
 
- class_scheduled_at = CompareRatios(start_time,end_time);
- out = class_scheduled_at;
+ class_scheduled_at = CompareRatios(name_of_class,start_time,end_time);
+
 
 end
 end

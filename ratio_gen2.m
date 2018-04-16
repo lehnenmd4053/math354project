@@ -37,7 +37,7 @@ end
 [text_2_length, ~] = size(text_2);
 [class_names_vector_length, ~] = size(class_names_vector);
 class_totals = zeros(text_2_length,1);
-class_names_vector = class_names_vector(2:class_names_vector_length,:)
+class_names_vector = class_names_vector(2:class_names_vector_length,:);
 class_names_vector_length = class_names_vector_length - 1;
 class_names_vector = sort(class_names_vector);
 
@@ -73,8 +73,6 @@ for ii = 1:text_2_length
 end
 
 
-display(seats_available);
-display(class_totals);
 for mm = 1:length(seats_available)
    if (seats_available(mm,1) > 0)
        ratio(mm,1) = class_totals(mm,1) / seats_available(mm,1);
