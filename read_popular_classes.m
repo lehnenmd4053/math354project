@@ -1,4 +1,4 @@
-%This function reads the file "Top 73 Course List" and stores it into a
+    %This function reads the file "Top 73 Course List" and stores it into a
 %vector that is passed to newtestcase.  Once newtestcase runs and sends
 %back a new vector, the new vector gets any of its unnecassary cells
 %deleted to create the final vector "popular_class_list".

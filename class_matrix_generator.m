@@ -9,11 +9,11 @@ time_vector = -ones(1,24);
 for ii = 1:24
     time_vector(1,ii) = (ii/24); %Creates times in terms of the number system used
     time_vector = round(time_vector,3);
-    fprintf('the time is %1.0f which is equivalent to %1.8f.\n', ii, time_vector(1,ii)); %displays times
+    %fprintf('the time is %1.0f which is equivalent to %1.8f.\n', ii, time_vector(1,ii)); %displays times
 end %for
 
 class_times = read_popular_classes(); %calls read_popular_classes function to populate class_times matrix
-class_times = class_times(1:341,8:9) %only saves the information from the popular classes matrix that involves time (rows 8 and 9).
+class_times = class_times(1:341,8:9); %only saves the information from the popular classes matrix that involves time (rows 8 and 9).
 
 %finds any missing values in the timeslots and replaces them with 0
 %Some popular classes are independent studies/capstones with no times
@@ -47,9 +47,15 @@ for jj = 1:24
 end %for jj
 end %for yy
 
+
 h = pcolor(times);
 h.EdgeColor = 'none'; %outputs a pictoral representation
+colormap([43/255 62/255 133/255; 237/255 172/255 26/255]);
 
+xlabel('Time of Class');
+ylabel('Class');
+
+output= times;
 
 
 end %function
