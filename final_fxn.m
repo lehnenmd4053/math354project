@@ -12,10 +12,9 @@ end
 if foundClass == 0
     out = 'not analyzed';
 else
-   
-
- class_scheduled_at = CompareRatios(name_of_class,start_time,end_time);
-
+    
+    class_scheduled_at = CompareRatios2(name_of_class,start_time,end_time);
+    out = class_scheduled_at;
 
 end
 end
