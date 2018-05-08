@@ -1,3 +1,11 @@
+%This function takes a class name, start time, and end time.
+%It ensures that the entered class name is on the Top 73 course list
+%and lets the user decide if the class starts in the AM or PM and ends
+%in the AM or PM. The code decides how many 15 minute intervals the 
+%class spans over, and pulls information from CompareRatios2 to
+%output the time a new section should be scheduled with the least conflicts,
+%depending on other courses commonly taken together.
+
 function class_scheduled_at = final_fxn(name_of_class,start_time,end_time)
 
 
