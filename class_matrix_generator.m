@@ -1,3 +1,7 @@
+%CLASS_MATRIX_GENERATOR will generate a matrix of 1s and 0s based on the times that a class is scheduled.
+%The rows represent each section of the popular classes and each column represents the time the class
+%takes place. Time is divided into 15 minute intervals with the first column representing 12:00am.
+
 function output = class_matrix_generator()
 
 
@@ -46,24 +50,6 @@ for jj = 1:24
 end %for jj
 end %for yy
 
-%%%%%%%%%%%%%%%%%%%%%%
-
-
-%This is the Graphing section of Code, can be omitted and run properly
-
-
-
-% h = pcolor(times);
-% h.EdgeColor = 'none'; %outputs a pictoral representation
-% colormap([43/255 62/255 133/255; 237/255 172/255 26/255]);
-% 
-% xlabel('Time of Class');
-% ylabel('Class');
-
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%
 
 output= times;
 
