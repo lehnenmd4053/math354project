@@ -5,6 +5,14 @@
 %class spans over, and pulls information from CompareRatios2 to
 %output the time a new section should be scheduled with the least conflicts,
 %depending on other courses commonly taken together.
+%
+%To use inputs on final function:
+%final_fxn('GEOG 178',8,4) will determine the optimal time to schedule
+%Geography 178 between 8a and 4p.
+%
+%The class name must be capitalized and there must be a space between
+%the letters and the numbers.  The range of scheduling time must be
+%on the hour, so an input such as final_fxn('GEOG 178',8:30,4) will not work.
 
 function class_scheduled_at = final_fxn(name_of_class,start_time,end_time)
 
