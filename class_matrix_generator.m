@@ -17,7 +17,6 @@ class_times = class_times(1:341,8:9); %only saves the information from the popul
 
 %finds any missing values in the timeslots and replaces them with 0
 %Some popular classes are independent studies/capstones with no times
-missing_matrix = 5*ones(size(class_times));
 missing_matrix = ismissing(class_times);
 for kk = 1:length(missing_matrix)
     if (missing_matrix(kk,1) == 1)
@@ -47,13 +46,24 @@ for jj = 1:24
 end %for jj
 end %for yy
 
+%%%%%%%%%%%%%%%%%%%%%%
 
-h = pcolor(times);
-h.EdgeColor = 'none'; %outputs a pictoral representation
-colormap([43/255 62/255 133/255; 237/255 172/255 26/255]);
 
-xlabel('Time of Class');
-ylabel('Class');
+%This is the Graphing section of Code, can be omitted and run properly
+
+
+
+% h = pcolor(times);
+% h.EdgeColor = 'none'; %outputs a pictoral representation
+% colormap([43/255 62/255 133/255; 237/255 172/255 26/255]);
+% 
+% xlabel('Time of Class');
+% ylabel('Class');
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%
 
 output= times;
 

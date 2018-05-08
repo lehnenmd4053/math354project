@@ -78,28 +78,29 @@ for mm = 1:length(seats_available)
 end
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%graphing
-counter = 1;
-for ii = 1:20
-    if ratio(ii,1) > 1
-        graphing_numbers(counter,1) = class_totals(ii,1);
-        graphing_numbers(counter,2) = seats_available(ii,1);
-        %graphing_numbers(counter,3) = graphing_numbers(counter,1) / graphing_numbers(counter,2);
-        counter = counter + 1;
-    end
-       
-end
-hb = bar(graphing_numbers);
-%hb = scatter(linspace(1,length(graphing_numbers),length(graphing_numbers)),graphing_numbers(:,3));
-legend('Number of Students Wanting to Take Class','Number of Seats Available');
-set(gca,'Xticklabel',[]);
-title('Number of Students and Available Seats')
-% set(hb(1),'Color', [43/255 62/255 133/255]);
-% set(hb(2),'Color', [237/255 172/255 26/255]);
-set(hb(1), 'FaceColor', [43/255 62/255 133/255])
-set(hb(2), 'FaceColor', [237/255 172/255 26/255])
-% % hb(1).FaceColor = 'b';
-% % hb(2).FaceColor = 'g';
+
+% %graphing
+% counter = 1;
+% for ii = 1:20
+%     if ratio(ii,1) > 1
+%         graphing_numbers(counter,1) = class_totals(ii,1);
+%         graphing_numbers(counter,2) = seats_available(ii,1);
+%         %graphing_numbers(counter,3) = graphing_numbers(counter,1) / graphing_numbers(counter,2);
+%         counter = counter + 1;
+%     end
+%        
+% end
+% hb = bar(graphing_numbers);
+% %hb = scatter(linspace(1,length(graphing_numbers),length(graphing_numbers)),graphing_numbers(:,3));
+% legend('Number of Students Wanting to Take Class','Number of Seats Available');
+% set(gca,'Xticklabel',[]);
+% title('Number of Students and Available Seats')
+% % set(hb(1),'Color', [43/255 62/255 133/255]);
+% % set(hb(2),'Color', [237/255 172/255 26/255]);
+% set(hb(1), 'FaceColor', [43/255 62/255 133/255])
+% set(hb(2), 'FaceColor', [237/255 172/255 26/255])
+% % % hb(1).FaceColor = 'b';
+% % % hb(2).FaceColor = 'g';
 
 
 

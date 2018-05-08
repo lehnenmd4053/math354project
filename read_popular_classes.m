@@ -1,4 +1,4 @@
-    %This function reads the file "Top 73 Course List" and stores it into a
+%This function reads the file "Top 73 Course List" and stores it into a
 %vector that is passed to newtestcase.  Once newtestcase runs and sends
 %back a new vector, the new vector gets any of its unnecassary cells
 %deleted to create the final vector "popular_class_list".
@@ -7,7 +7,6 @@
 function popular_class_list = read_popular_classes()
 filename = 'Top 73 Course List.xlsx';
 [~, txt2] = xlsread(filename); %num information is nulled out because it is not needed
-popular_class_list = strings(length(txt2),1); %initializes a new vector with the size of the newly read file
 popular_class_list = newtestcase(txt2(:,2)); %calls newtestcase function to populate list.
 
 jj = 0;
