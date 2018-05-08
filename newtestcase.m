@@ -34,4 +34,4 @@ end %for ii
 
 output = [new_class_list_num, new_class_list_s];
 
-end %fcn
+end %fxn
