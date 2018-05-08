@@ -1,9 +1,9 @@
-function output = CompareRatios2(class_name,time_start,time_end)
-
 %Takes into account the number of student conflicts for students that need
 %to take this course and also how many classes are already scheduled at
 %that time.  Change the weight of the ratios by changing the multiplyer
 %in front of ratio1 and ratio2 on lines 16 and 17.
+
+function output = CompareRatios2(class_name,time_start,time_end)
 
 ratio1 = weight(class_name);  %Calls weight function
 ratio1 = ratio1(1,time_start:time_end);
