@@ -1,3 +1,7 @@
+%This function simply removes missing data and classes
+%we are not analyzing so that those do not enter our
+%other functions.
+
 function output = resize(vector1)
 
 [~, text_2] = xlsread('Top 73 Course List.xlsx');
