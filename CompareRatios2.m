@@ -5,21 +5,21 @@
 
 function output = CompareRatios2(class_name,time_start,time_end)
 
-ratio1 = weight(class_name);  %Calls weight function
-ratio1 = ratio1(1,time_start:time_end);
-class_schedule = testing();
-ratio2 = sum(class_schedule);
-ratio2 = ratio2(1,time_start:time_end);
+conflict_weight = weight(class_name);  %Calls weight function
+conflict_weight = conflict_weight(1,time_start:time_end);
+class_schedule = class_matrix_generator();
+schedule_weight = sum(class_schedule);
+schedule_weight = schedule_weight(1,time_start:time_end);
 
 %%add in weighting for ratio1 and ratio2, needs to be adjusted to what we
 %decide
-ratio1_weight = 1 * ratio1;
-ratio2 = 1 * ratio2;
+conflic_weight = 1 * conflict_weight;
+schedule_weight = 1 * schedule_weight;
 
 %%This section identifies the index of the smallest value.  This corresponds
 %to the smallest number of student conflict which in return is the optimal
 %time to schedule the section.
-total_ratio = ratio1_weight + ratio2;
+total_ratio = conflic_weight + schedule_weight;
 [~,I] = min(total_ratio);
 new_time_scheduled = I + time_start - 1;
 
