@@ -1,22 +1,21 @@
-%This function simply removes missing data and classes
-%we are not analyzing so that those do not enter our
-%other functions.
+%This function simply removes classes that contain missing data in their
+%time columns.  The new_vector is the edited version of the input_vector
 
-function output = resize(vector1)
+function output = resize(input_vector)
 
-[~, text_2] = xlsread('Top 73 Course List.xlsx');
-text_2 = text_2(:,2:2);
+[~, top_class_text] = xlsread('Top 73 Course List.xlsx');
+top_class_text = top_class_text(:,2:2);
 
-text_2 = string(text_2);
-vector1 = string(vector1);
+top_class_text = string(top_class_text);
+input_vector = string(input_vector);
 
 new_vector = strings;
 counter = 1;
-for ii = 1:length(text_2)
-    for jj = 1:length(vector1)
-        sameBool = isequal(text_2(ii,1), vector1(jj,1));
+for ii = 1:length(top_class_text)
+    for jj = 1:length(input_vector)
+        sameBool = isequal(top_class_text(ii,1), input_vector(jj,1));
         if (sameBool == 1)
-            new_vector(counter, 1) = text_2(ii,1);
+            new_vector(counter, 1) = top_class_text(ii,1);
             counter = counter + 1;
         end
     end

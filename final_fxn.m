@@ -16,7 +16,7 @@
 
 function class_scheduled_at = final_fxn(name_of_class,start_time,end_time)
 
-
+%%
 %Allows for user input to determine if the scheduling time is for morning
 %or afternoon.
 prompt = {'Is the class start time A.M.? [Y/N]: ','Is the class end time A.M.? [Y/N]: '};
@@ -39,13 +39,16 @@ else
     end_time = 4*end_time + 48;
 end
 
-
+%%
+%Reads in the file that will be used to determine if the class being
+%analyzed is worth analyzing
 filename = 'Top 73 Course List.xlsx';
 [~, top_classes] = xlsread(filename);
 name_of_class = cellstr(name_of_class);
 foundClass = 0;
 ii = 1;
 
+%%
 %While loop checks the class entered agaisnt all of the classes on the Top
 %73 course list.  If that class is not found, the function outputs 'not
 %analyzed', otherwise it will proceed to run the inner functions.

@@ -33,6 +33,7 @@ for ii = 1:length(CourseCombinationText)
             id_didnt_change = isequal(student_id,CourseCombinationText(jj,15));
         end
         
+        %%
         %This section records all classes that the student is taking to use
         %them to ensure the student is not double-enrolling in a time.
         %Only records student classes of students who are taking the
@@ -40,56 +41,53 @@ for ii = 1:length(CourseCombinationText)
         id_change_found = 1;
         jj = jj + 1;
         while (id_change_found == 1)
-            class_vector(counter,1) = CourseCombinationText(jj,class_column);
-            class_vector(counter,2) = CourseCombinationText(jj,section_column);
+            total_student_class_vector(counter,1) = CourseCombinationText(jj,class_column);
+            total_student_class_vector(counter,2) = CourseCombinationText(jj,section_column);
             id_change_found = isequal(student_id,CourseCombinationText(jj,15));
             new_num(counter,1) = CourseCombinationNum(jj-1,11);
             jj = jj + 1;
             counter = counter + 1;
         end
-        class_vector = class_vector(1:end - 1,:); %holds all of the classes
-                                                  %and sectionthat the 
+        total_student_class_vector = total_student_class_vector(1:end - 1,:); %holds all of the classes
+                                                  %and section that the 
                                                   %students will be enrolled in
         new_num = new_num(1:end - 1,:);
         counter = counter - 1;
     end
 end
 
-% class_matrix = class_matrix_generator();
-% [time_matrix_length, time_matrix_width] = size(class_matrix);
-
 %Some of the sections of classes were not stored as text in Excel, this
 %section will find all of those entries and store the correct section
 %number using the number matrix created by the xlsread
-class_vector = string(class_vector);
-for ii = 1:length(class_vector)
-    isEmpty = isequal(class_vector(ii,2),"");
+total_student_class_vector = string(total_student_class_vector);
+for ii = 1:length(total_student_class_vector)
+    isEmpty = isequal(total_student_class_vector(ii,2),"");
     if isEmpty == 1
-        class_vector(ii,2) = string(new_num(ii,1));
+        total_student_class_vector(ii,2) = string(new_num(ii,1));
     end
 end
 
 [~, textTopClassesTaken] = xlsread('Top 73 Course List.xlsx');
 textTopClassesTaken = textTopClassesTaken(:,2:2);
 textTopClassesTaken = string(textTopClassesTaken);
-new_vector = strings;
+resized_class_vector = strings;
 counter = 1;
 for ii = 1:length(textTopClassesTaken)
-    for jj = 1:length(class_vector)
-        sameBool = isequal(textTopClassesTaken(ii,1), class_vector(jj,1));
+    for jj = 1:length(total_student_class_vector)
+        sameBool = isequal(textTopClassesTaken(ii,1), total_student_class_vector(jj,1));
         if (sameBool == 1)
-            new_vector(counter, 1) = class_vector(ii,1);
-            new_vector(counter, 2) = class_vector(ii,2);
+            resized_class_vector(counter, 1) = total_student_class_vector(ii,1);
+            resized_class_vector(counter, 2) = total_student_class_vector(ii,2);
             counter = counter + 1;
         end
     end
 end
-[~,idx] = sort(new_vector(:,1));
-sorted_vector = new_vector(idx,:);
+[~,idx] = sort(resized_class_vector(:,1));
+sorted_vector = resized_class_vector(idx,:);
 sorted_vector = strip(sorted_vector, 'left', '0'); %removes all leading zeros of numbers
 
-[class_matrix,remove_these_classes] = testing();
-%class_matrix = class_matrix_generator();
+[class_matrix,remove_these_classes] = class_matrix_generator();
+
 
 popular_class_list = read_popular_classes();
 remove_this_many_from_vector = 0;
@@ -117,7 +115,6 @@ for ii = 1:popular_class_length
             sameSection = isequal(popular_class_list(ii,1),sorted_vector(jj,2));
             if sameSection == 1
                 class_enroll(counter,1) = class_enroll(counter,1) + 1;
-                
             end
         end
     end
