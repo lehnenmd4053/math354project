@@ -1,3 +1,17 @@
+%WEIGHT determines how many students are taking a class at a specific time.
+%It will output a matrix that shows the total number of students enrolled
+%in a specific class, with each row representing a specific class, and each
+%row is the time the class takes place in 15 minute intervals.
+%
+%The input to this function is a class, using the notation weight('GEOG
+%178') as an example.  The class must be in all capitals and the numbers
+%separated from the letters.
+%
+%This function will then find all students that have this class on their
+%degree program, and all other classes their degree program tells them to
+%take.  From here, the function will total the enrollment of each popular
+%class and put them into a matrix.
+
 function output = weight(class_name)
 class_name = cellstr(class_name);
 
@@ -56,6 +70,7 @@ for ii = 1:length(CourseCombinationText)
     end
 end
 
+%%
 %Some of the sections of classes were not stored as text in Excel, this
 %section will find all of those entries and store the correct section
 %number using the number matrix created by the xlsread
@@ -67,6 +82,10 @@ for ii = 1:length(total_student_class_vector)
     end
 end
 
+
+%%
+%This section removes the classes that students are taking, as defined by
+%their degree plan, that are not part of the top course list.
 [~, textTopClassesTaken] = xlsread('Top 73 Course List.xlsx');
 textTopClassesTaken = textTopClassesTaken(:,2:2);
 textTopClassesTaken = string(textTopClassesTaken);
@@ -88,7 +107,13 @@ sorted_vector = strip(sorted_vector, 'left', '0'); %removes all leading zeros of
 
 [class_matrix,remove_these_classes] = class_matrix_generator();
 
-
+%%
+%Since specific classes were removed from the popular class list in another
+%function, we need to remove those same sections from this list of classes.
+%This chunk of code will do that by determining the order of the popular
+%classes using read_popular_classes() and using remove_these_classes
+%generated from class_matrix_generator() to remove the classes a specified
+%idecies.
 popular_class_list = read_popular_classes();
 remove_this_many_from_vector = 0;
 for loopCount = 1:length(remove_these_classes)
@@ -103,7 +128,9 @@ new_length = popular_length - remove_this_many_from_vector;
 popular_class_list = popular_class_list(1:new_length,:);
 
 
-
+%%
+%This will count how many total students are enrolled in each class,
+%totalling each section together
 [popular_class_length,~] = size(popular_class_list);
 [class_vector_length,~] = size(sorted_vector);
 class_enroll = zeros(popular_class_length,1);
@@ -121,7 +148,10 @@ for ii = 1:popular_class_length
     counter = counter + 1;
 end
 
-
+%%
+%Finds the spot where the classes are scheduled by using the matrix
+%generated in tn class_matrix_generator(), removes the 1 that was used as a
+%placeholder for the time, then replaces it with the class totals.
 [time_matrix_length, time_matrix_width] = size(class_matrix);
 
 for ii = 1:time_matrix_length
